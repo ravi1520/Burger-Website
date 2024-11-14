@@ -1,0 +1,511 @@
+<html>
+<head>
+    <title>Menu</title>
+</head>
+<style>
+    body {
+        background-color: #fff8e1;
+    }
+    .header {
+        display: flex;
+        justify-content: space-around;
+    }
+    .logo img {
+        width: 200px;
+        height: 80px;
+    }
+    .anchor {
+        margin: 20px;
+    }
+    a {
+        padding: 20px;
+        text-decoration: none;
+    }
+    a:hover {
+        color: black;
+        background-color: whitesmoke;
+        border-radius: 30px;
+    }
+    .restaurent-cards {
+        margin: 100px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 70px;
+    }
+    .restaurent-card {
+        width: 250px;
+        border-radius: 10px;
+        box-shadow: 10px 10px 40px rgba(128, 128, 128, 0.4);
+        background-color: white;
+    }
+    .restaurent-image img {
+        width: 100%;
+        height: 200px;
+        border-radius: 10px 10px 0 0;
+        transition: 1s;
+    }
+    .group {
+        display: flex;
+        justify-content: space-between;
+    }
+    .details {
+        padding: 10px;
+    }
+    .rating {
+        background-color: green;
+        color: white;
+        font-weight: 700;
+        padding: 5px;
+        border-radius: 5px;
+        text-align: center;
+    }
+    .menu {
+        font-weight: 600;
+    }
+    .restaurent-image {
+        position: relative;
+        cursor: pointer;
+    }
+    .restaurent-image .dis {
+        position: absolute;
+        bottom: 10px;
+        left: 5px;
+        background-color: red;
+        color: white;
+        border-radius: 5px;
+    }
+    .restaurent-image .price {
+        position: absolute;
+        bottom: 10px;
+        background-color: white;
+        right: 5px;
+        font-weight: 900;
+        float: right;
+        border-radius: 3px;
+    }
+    .restaurent-image img:hover {
+        transform: scale(1.1);
+    }
+    .cart {
+        text-align: center;
+        margin: 10px;
+    }
+    .cart button {
+        background-color: yellow;
+        color: black;
+        font-weight: 700;
+        padding: 5px;
+        border-radius: 20px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .cart-container {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: white;
+        border: 1px solid #ccc;
+        padding: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: none;
+        z-index: 1000;
+    }
+      .cart button:hover{
+      
+      
+      transform: scale(1.1);
+      
+    }
+</style>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="Burger3logo.jpg">
+        </div>
+        <div class="anchor">
+            <a href="home.html">HOME</a>
+            <a href="menuuu.html">MENU</a>
+            <a href="about.html">ABOUT US</a>
+            <a href="contact.html">CONTACT US</a>
+        </div>
+    </div>
+    
+    <div class="cart-container" id="cartContainer">
+        <h3>Cart</h3>
+        <div id="cartItems"></div>
+        <button onclick="checkout()">Checkout</button>
+    </div>
+
+    <div class="restaurent-cards">
+        <!-- Your restaurant cards -->
+        <div class="restaurent-card" id="item1">
+            <div class="restaurent-image">
+                <img src="m1.jpg">
+                <div class="dis">40% OFF upto &#x20b9 100</div>
+                <div class="price">&#x20b9 600</div>
+            </div>
+            <div class="details">
+                <div class="group">
+                    <p class="menu">Chicken Burger</p>
+                    <p class="rating">4.8 &#x2605</p>
+                </div>
+                <div class="group">
+                    <p>Authentic double grilled patties topped with cheese, caramelized onions and BBQ sauce.</p>
+                </div>
+            </div>
+            <div class="cart">
+                <button onclick="addToCart('Chicken Burger', 600)">ADD TO CART</button>
+            </div>
+        </div>
+        
+        <div class="restaurent-card" id="item2">
+            <div class="restaurent-image">
+              <img src="n1.jpg">
+              <div class="dis">
+                40% OFF upto &#x20b9 100
+              </div>
+              <div class="price"> &#x20b9 500 </div>
+
+            </div>
+            <div class="details">
+              <div class="group">
+                <p class="menu">Chicken Fillet Burger</p>
+                <p class="rating">4.3 &#x2605</p>
+
+              </div>
+              <div class="group">
+                <p>An epic combination of cheese and chicken spiced with peri peri sauce.</p>
+             
+
+              </div>
+
+            </div>
+            <div class="cart">
+              <button onclick="addToCart('Chicken Fillet Burger', 500)">ADD To CART</button>
+               </div>
+
+
+          
+        
+        <!-- Repeat similar structure for other items... -->
+    </div>
+    <div class="restaurent-card" id="item3">
+        <div class="restaurent-image">
+          <img src="n2.jpg">
+          <div class="dis">
+            40% OFF upto &#x20b9 100
+          </div>
+          <div class="price"> &#x20b9 600 </div>
+
+        </div>
+        <div class="details">
+          <div class="group">
+            <p class="menu">Smoked Wheat Burger</p>
+            <p class="rating">4.6 &#x2605</p>
+
+          </div>
+          <div class="group">
+            <p>Super meaty burger with lamb & chicken patty, egg and BBQ sauce</p>
+           
+
+          </div>
+
+        </div>
+        <div class="cart">
+          <button onclick="addToCart('Smoked Wheat Burger', 600)">ADD To CART</button>
+           </div>
+
+
+      </div>
+      <div class="restaurent-card" id="item4">
+        <div class="restaurent-image">
+          <img src="m4.jpg">
+          <div class="dis">
+            40% OFF upto &#x20b9 100
+          </div>
+          <div class="price"> &#x20b9 800 </div>
+
+        </div>
+        <div class="details">
+          <div class="group">
+            <p class="menu">Volcano Cheese Burger</p>
+            <p class="rating">4.8 &#x2605</p>
+
+          </div>
+          <div class="group">
+            <p>Molten cheese stuffed patty seasoned with gherkins and sauce of your choice</p>
+           
+
+          </div>
+
+        </div>
+        <div class="cart">
+          <button onclick="addToCart('Volcano Cheese Burger', 800)">ADD To CART</button>
+           </div>
+
+
+      </div>
+      <div class="restaurent-card" id="item5">
+        <div class="restaurent-image">
+          <img src="m5.jpg">
+          <div class="dis">
+            40% OFF upto &#x20b9 100
+          </div>
+          <div class="price"> &#x20b9 500 </div>
+
+        </div>
+        <div class="details">
+          <div class="group">
+            <p class="menu">Grilled Peri Peri Paneer Burger</p>
+            <p class="rating">4.8 &#x2605</p>
+
+          </div>
+          <div class="group">
+            <p>Marinated malai paneer cubes pan seared to perfection, crispy iceberg lettuce & gherkins with sauce of your choice..</p>
+           
+
+          </div>
+
+        </div>
+        <div class="cart">
+          <button onclick="addToCart('Grilled Peri Peri Paneer Burger', 500)">ADD To CART</button>
+           </div>
+
+
+      </div>
+      <div class="restaurent-card" id="item6">
+        <div class="restaurent-image">
+          <img src="m6.jpg">
+          <div class="dis">
+            40% OFF upto &#x20b9 100
+          </div>
+          <div class="price"> &#x20b9 300 </div>
+
+        </div>
+        <div class="details">
+          <div class="group">
+            <p class="menu">Krunchy Tandoori Paneer Burger</p>
+            <p class="rating">4.5 &#x2605</p>
+
+          </div>
+          <div class="group">
+            <p>Crispy coated paneer patty, lettuce, onions and sauce of your choice.</p>
+           
+
+          </div>
+          <div class="cart">
+            <button onclick="addToCart('Krunchy Tandoori Paneer Burger', 300)">ADD To CART</button>
+             </div>
+
+
+        </div>
+        
+
+      </div>
+      <div class="restaurent-card" id="item7">
+        <div class="restaurent-image">
+          <img src="p1.jpg">
+          <div class="dis">
+            40% OFF upto &#x20b9 150
+          </div>
+          <div class="price"> &#x20b9 429 </div>
+
+        </div>
+        <div class="details">
+          <div class="group">
+            <p class="menu">Peppy Paneer</p>
+            <p class="rating">4.5 &#x2605</p>
+
+          </div>
+          <div class="group">
+            <p>Flavorful trio of juicy paneer, crisp capsicum with spicy red paprika.</p>
+            
+
+          </div>
+          <div class="cart">
+            <button onclick="addToCart('Peppy Paneer', 429)">ADD To CART</button>
+             </div>
+
+
+        </div>
+        
+
+      </div>
+      <div class="restaurent-card" id="item8">
+        <div class="restaurent-image">
+          <img src="p2.jpg">
+          <div class="dis">
+            40% OFF upto &#x20b9 150
+          </div>
+          <div class="price"> &#x20b9 300 </div>
+
+        </div>
+        <div class="details">
+          <div class="group">
+            <p class="menu">Cheese Volcano Farmhouser</p>
+            <p class="rating">4.8 &#x2605</p>
+
+          </div>
+          <div class="group">
+            <p>Centre loaded with Molten Cheese & topped with Onion, Capsicum, Tomato & Grilled Mushroom.</p>
+          
+
+          </div>
+          <div class="cart">
+            <button onclick="addToCart('Cheese Volcano Farmhouser', 300)">ADD To CART</button>
+             </div>
+
+
+        </div>
+        
+
+      </div>
+      <div class="restaurent-card" id="item9">
+        <div class="restaurent-image">
+          <img src="p3.jpg">
+          <div class="dis">
+            40% OFF upto &#x20b9 150
+          </div>
+          <div class="price"> &#x20b9 400 </div>
+
+        </div>
+        <div class="details">
+          <div class="group">
+            <p class="menu">Farmhouse</p>
+            <p class="rating">4.5 &#x2605</p>
+
+          </div>
+          <div class="group">
+            <p>Delightful combination of onion, capsicum, tomato & grilled mushroom.</p>
+           
+
+          </div>
+
+        </div>
+        <div class="cart">
+          <button onclick="addToCart('Farmhouse', 400)">ADD To CART</button>
+           </div>
+
+        
+
+      </div>
+      <div class="restaurent-card" id="item10">
+        <div class="restaurent-image">
+          <img src="p4.jpg">
+          <div class="dis">
+            40% OFF upto &#x20b9 150
+          </div>
+          <div class="price"> &#x20b9 549 </div>
+
+        </div>
+        <div class="details">
+          <div class="group">
+            <p class="menu">Mixed Pizza</p>
+            <p class="rating">4.9 &#x2605</p>
+
+          </div>
+          <div class="group">
+            <p>Black olives, capsicum, onion, grilled mushroom, corn, tomato, jalapeno & extra cheese</p>
+           
+
+          </div>
+          <div class="cart">
+            <button onclick="addToCart('Mixed Pizza', 549)">ADD To CART</button>
+             </div>
+
+
+        </div>
+        
+
+      </div>
+      <div class="restaurent-card" id="item11">
+        <div class="restaurent-image">
+          <img src="p5.jpg">
+          <div class="dis">
+            40% OFF upto &#x20b9 150
+          </div>
+          <div class="price"> &#x20b9 490 </div>
+
+        </div>
+        <div class="details">
+          <div class="group">
+            <p class="menu">Cheese Blazing Chicken</p>
+            <p class="rating">4.5 &#x2605</p>
+
+          </div>
+          <div class="group">
+            <p>Centre loaded with Molten Cheese & topped with Chicken Keema & Red Paprika with our spicy Peri Peri</p>
+       
+
+          </div>
+
+        </div>
+        <div class="cart">
+          <button onclick="addToCart('Cheese Blazing Chicken', 490)">ADD To CART</button>
+           </div>
+
+        
+
+      </div>
+      <div class="restaurent-card" id="item12">
+        <div class="restaurent-image">
+          <img src="p6.jpg">
+          <div class="dis">
+            40% OFF upto &#x20b9 150
+          </div>
+          <div class="price"> &#x20b9 500 </div>
+
+        </div>
+        <div class="details">
+          <div class="group">
+            <p class="menu">Chilli Chicken Pizza</p>
+            <p class="rating">4.6 &#x2605</p>
+
+          </div>
+          <div class="group">
+            <p>Loaded with 5 different Chicken toppings - grilled Chicken Rashers, Chicken Meatballs, Chicken Tikka,</p>
+            
+
+          </div>
+
+        </div>
+        <div class="cart">
+          <button onclick="addToCart('Chilli Chicken Pizza', 500)">ADD To CART</button>
+           </div>
+
+        
+
+      </div>
+    
+</div>
+    <script>
+        const cart = [];
+
+        function addToCart(itemName, itemPrice) {
+            cart.push({ name: itemName, price: itemPrice });
+            displayCart();
+        }
+
+        function displayCart() {
+            const cartContainer = document.getElementById('cartContainer');
+            const cartItems = document.getElementById('cartItems');
+
+            cartItems.innerHTML = '';
+            cart.forEach((item, index) => {
+                cartItems.innerHTML += `<p>${item.name} - &#x20b9 ${item.price} <button onclick="removeFromCart(${index})">Remove</button></p>`;
+            });
+
+            cartContainer.style.display = cart.length > 0 ? 'block' : 'none';
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            displayCart();
+        }
+
+        function checkout() {
+            alert('Proceeding to checkout...');
+        }
+    </script>
+</body>
+</html>
